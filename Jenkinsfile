@@ -14,17 +14,17 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'cat /etc/os-release'
+        sh 'mvn clean package'
       }
     }
     stage('Test') {
       steps {
-        sh 'java --version'
+        sh 'mvn test'
       }
     }
     stage('Deploy') {
       steps {
-        deploy adapters: [tomcat9(credentialsId: 'admin', url: 'http://43.202.164.13:8080')], contextPath: null, war: 'path/to/war'
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-manager', path: '', url: 'http://43.202.164.13:8080/')], contextPath: null, war: 'target/hello-world.war'
       }
     }
   }
