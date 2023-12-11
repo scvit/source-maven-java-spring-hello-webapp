@@ -34,7 +34,6 @@ pipeline {
       agent any
       steps {
         sh 'docker image tag myhello mwjo/ansible_pipeline:$BUILD_NUMBER'
-        sh 'docker image tag myhello mwjo/ansible_piepline:latest'
       }
     }
     stage('Publish Docker Image') {
