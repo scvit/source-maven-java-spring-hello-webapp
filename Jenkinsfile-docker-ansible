@@ -27,14 +27,14 @@ pipeline {
     stage('Build Docker Image') {
       agent any
       steps {
-        sh 'docker image build -t ansible_pipeline .'
+        sh 'docker image build -t myhello .'
       }
     }
     stage('Tag Docker Image') {
       agent any
       steps {
-        sh 'docker image tag mwjojenkins mwjo/jenkins-ansible:$BUILD_NUMBER'
-        sh 'docker image tag mwjojenkins mwjo/jenkins-ansible:latest'
+        sh 'docker image tag myhello c1t1d0s7/myhello:$BUILD_NUMBER'
+        sh 'docker image tag myhello c1t1d0s7/myhello:latest'
       }
     }
     stage('Publish Docker Image') {
